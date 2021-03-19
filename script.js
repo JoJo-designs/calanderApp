@@ -1,8 +1,7 @@
+//setting variables 
 var hoursList = {
     hours: ["hour1", "hour2", "hour3", "hour4", "hour5", "hour6", "hour7", "hour8" ], 
 }
-
-
 
 var timeSlots = document.querySelector(".container");
 var buttonClick = document.querySelectorAll(".saveBtn");
@@ -10,10 +9,10 @@ var inputArea = document.querySelector(".textArea9");
 
 var element;
 
-
+//log the array in the hoursList object
 console.log(hoursList.hours)
 
-// add the date to the file
+// adding the date to the file
 var today = moment();
 $("#currentDay").text(today.format("ddd MMM Do, YYYY"));
 
@@ -26,17 +25,19 @@ timeSlots.addEventListener("click", function(event){
     };
 });
 
+// function to catch the value entered into the text area
 function collectValue() {
-    var text = ("#textArea9").val;
-    localStorage.setItem("hour1", JSON.stringify(text))
-    console.log(text);
-}
+    var input = document.getElementById('textArea9');
+    console.log(input.value); 
+    hoursList.hours[0] = input.value;
+    console.log(hoursList.hours)
+    localStorage.setItem("hours", JSON.stringify(hoursList.hours))
+
+};
 
 function replaceValue() {
-    hoursList.hours[0] = (document.getElementById(".textArea9"));
-    console.log(hoursList.hours)
-  
-    localStorage.setItem("place", JSON.stringify(hoursList.hours)) 
-    console.log( JSON.parse(hoursList.hours));
-    
+    localStorage.getItem("hours")
+    inputArea.innerHTML = JSON.parse(hoursList.hours[0])
 }
+
+
