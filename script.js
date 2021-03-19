@@ -5,7 +5,9 @@ var hoursList = {
 
 var timeSlots = document.querySelector(".container");
 var buttonClick = document.querySelectorAll(".saveBtn");
-var inputArea = document.querySelector(".textArea9");
+var inputArea9 = document.querySelector(".textArea9");
+var inputArea10 = document.querySelector(".textArea10");
+var input = document.querySelectorAll("textarea");
 
 var element;
 
@@ -22,22 +24,28 @@ timeSlots.addEventListener("click", function(event){
     if (element.matches("button")){
         console.log("A button was clicked");
         collectValue();
-    };
+    }; 
 });
 
 // function to catch the value entered into the text area
 function collectValue() {
-    var input = document.getElementById('textArea9');
     console.log(input.value); 
-    hoursList.hours[0] = input.value;
-    console.log(hoursList.hours)
-    localStorage.setItem("hours", JSON.stringify(hoursList.hours))
+   // if (inputArea9 = input.value) {
+        hoursList.hours[0] = input.value;
+        console.log(hoursList.hours)
+        localStorage.setItem("hours", JSON.stringify(hoursList.hours))
+   // } else if (inputArea10 = input.value) {
+       // hoursList.hours[1] = input.value;
+       // console.log(hoursList.hours)
+       // localStorage.setItem("hours", JSON.stringify(hoursList.hours))
+   // }
 
 };
 
+//Put Stored items into the input boxes it doesn't work right now. 
 function replaceValue() {
     localStorage.getItem("hours")
-    inputArea.innerHTML = JSON.parse(hoursList.hours[0])
+    inputArea9.write = JSON.parse(hoursList.hours)
 }
 
 
