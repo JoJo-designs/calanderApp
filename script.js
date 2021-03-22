@@ -33,23 +33,33 @@ timeSlots.addEventListener("click", function(event){
 //changes the colour of the background based on the time
 function colourTime() {
     //current hour but with only one number
-   var currentHour = moment().format("H");
+   var currentHour = moment().format("HH");
 
 
    for (var i = 0; i < input.length; i++) {
-       var thisTime = input[i];
+       var thisTime = input[i].getAttribute("data-oneHour");
         console.log(thisTime)
 
-        //input.classList.remove("past", "future", "present")
+        $("#textArea"+thisTime).removeClass("present", "past", "future");  
         
-    if (input.dataset.oneHour < currentHour) {
-        elements.classList.add("past");    
-    } else if (input.dataset.oneHour > currentHour) {
-        elements.classList.add("future");
+    if (thisTime < currentHour) {
+        $("#textArea"+thisTime).removeClass("present future").addClass("past");
+       // $("#textArea"+thisTime).addClass("past"); 
+        //$(thisTime).removeClass("present", "future");    
+        console.log("this value is in the past")
+    } else if (thisTime > currentHour) {
+        $("#textArea"+thisTime).removeClass("present past").addClass("future");
+        //$("#textArea"+thisTime).addClass("future");
+        //$(thisTime).removeClass("present", "past"); 
+        console.log("this value is in the future")
     } else {
-        elements.classList.add("present");
-    }
+        $("#textArea"+thisTime).removeClass("past future").addClass("present");
+        //$("#textArea"+thisTime).addClass("present");
+        //$(thisTime).removeClass( "past", "future"); 
+        console.log("this value is right now")
+    } 
    }
 }
+
 colourTime ();
 
