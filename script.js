@@ -7,9 +7,8 @@ var input = document.querySelectorAll("textarea");
 var element;
 var thisHour = moment().format("h:mm");
 console.log(thisHour)
-
-//log the array in the hoursList object
 console.log(input)
+
 // adding the date to the file
 var today = moment();
 $("#currentDay").text(today.format("ddd MMM Do, YYYY"));
@@ -36,20 +35,20 @@ function colourTime() {
     //current hour but with only one number
    var currentHour = moment().format("H");
 
+
    for (var i = 0; i < input.length; i++) {
        var thisTime = input[i];
-
-       var elements = document.querySelector(".textinput");
-       elements.classList.add("future");
-       //elements.classList.remove ("past", "future", "present")
+        console.log(thisTime)
+        var elements = document.querySelector(".textinput");
+        elements.classList.remove ("past", "future", "present")
         
-    //if (thisTime < currentHour) {
-       // elements.classList.add("past");    
-    //} else if (thisTime > currentHour) {
-       // elements.classList.add("future");
-    //} else {
-       // elements.classList.add("present");
-    //}
+    if (thisTime < currentHour) {
+        elements.classList.add("past");    
+    } else if (thisTime > currentHour) {
+        elements.classList.add("future");
+    } else {
+        elements.classList.add("present");
+    }
    }
 }
 colourTime ();
