@@ -3,12 +3,10 @@ var timeSlots = document.querySelector(".container");
 var buttonClick = document.querySelectorAll(".saveBtn");
 var input = document.querySelectorAll("textarea");
 
-var element;
-var currentHour = moment().format("hh mm");
-var pastHour;
-var thisHour = moment().format("hh mm");
-var nextHour;
 
+var element;
+var thisHour = moment().format("h:mm");
+console.log(thisHour)
 
 //log the array in the hoursList object
 console.log(input)
@@ -33,12 +31,25 @@ timeSlots.addEventListener("click", function(event){
     }; 
 });
 
-console.log(thisHour)
+//changes the colour of the background based on the time
+function colourTime() {
+    //current hour but with only one number
+   var currentHour = moment().format("H");
 
-//function colorChange() {
-   // if (thisHour === currentHour){
-       // input.setAttribute("background: yellow")
-   // }
-//}
+   for (var i = 0; i < input.length; i++) {
+       var thisTime = input[i];
 
-//colorChange ();
+       var elements = document.querySelector(".textinput");
+       elements.classList.add("future");
+       //elements.classList.remove ("past", "future", "present")
+        
+    //if (thisTime < currentHour) {
+       // elements.classList.add("past");    
+    //} else if (thisTime > currentHour) {
+       // elements.classList.add("future");
+    //} else {
+       // elements.classList.add("present");
+    //}
+   }
+}
+colourTime ();
