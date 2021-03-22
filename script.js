@@ -39,12 +39,12 @@ function colourTime() {
    for (var i = 0; i < input.length; i++) {
        var thisTime = input[i];
         console.log(thisTime)
-        var elements = document.querySelector(".textinput");
-        elements.classList.remove ("past", "future", "present")
+
+        //input.classList.remove("past", "future", "present")
         
-    if (thisTime < currentHour) {
+    if (input.dataset.oneHour < currentHour) {
         elements.classList.add("past");    
-    } else if (thisTime > currentHour) {
+    } else if (input.dataset.oneHour > currentHour) {
         elements.classList.add("future");
     } else {
         elements.classList.add("present");
@@ -52,3 +52,4 @@ function colourTime() {
    }
 }
 colourTime ();
+
