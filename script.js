@@ -18,9 +18,8 @@ input.forEach(function (hour) {
     hour.value = localStorage.getItem(hour.id)
     })
 
-//can get rid of console logs
-// adds an event listener to the save buttons
-timeSlots.addEventListener("click", function(event){
+//Add an event listener to the save buttons
+$(timeSlots).click(function(event){
     element = event.target; 
     if (element.matches("button")){
         console.log("A button was clicked");
@@ -28,38 +27,36 @@ timeSlots.addEventListener("click", function(event){
         var textArea = document.getElementById(id)
         localStorage.setItem(id, textArea.value)
     }; 
-});
+})
+
 
 //changes the colour of the background based on the time
 function colourTime() {
-    //current hour but with only one number
-   var currentHour = moment().format("HH");
+    //current hour
+   var currentHour = parseInt(moment().format("HH"));
 
-
+    //loop thought each time slot
    for (var i = 0; i < input.length; i++) {
-       var thisTime = input[i].getAttribute("data-oneHour");
+       var thisTime = parseInt(input[i].getAttribute("data-oneHour"));
         console.log(thisTime)
-
-        $("#textArea"+thisTime).removeClass("present", "past", "future");  
         
+        // Removes un-needed classesfrom each time slot.
+        $(input[i]).removeClass("present past future");  
+        
+    //checks each hour to and adds the right class.  
     if (thisTime < currentHour) {
-        $("#textArea"+thisTime).removeClass("present future").addClass("past");
-       // $("#textArea"+thisTime).addClass("past"); 
-        //$(thisTime).removeClass("present", "future");    
+        $(input[i]).addClass("past");  
         console.log("this value is in the past")
     } else if (thisTime > currentHour) {
-        $("#textArea"+thisTime).removeClass("present past").addClass("future");
-        //$("#textArea"+thisTime).addClass("future");
-        //$(thisTime).removeClass("present", "past"); 
+        $(input[i]).addClass("future");
         console.log("this value is in the future")
     } else {
-        $("#textArea"+thisTime).removeClass("past future").addClass("present");
-        //$("#textArea"+thisTime).addClass("present");
-        //$(thisTime).removeClass( "past", "future"); 
+        $(input[i]).addClass("present");
         console.log("this value is right now")
     } 
    }
 }
 
-colourTime ();
+
+setInterval(colourTime (), (1000 * 60)*5)
 
