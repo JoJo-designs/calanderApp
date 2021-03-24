@@ -5,7 +5,7 @@ Goal: The goal of this project is to create a clander app that can keep track of
 Some starter files were provided.
 index.html and style.css
 
-Live Verison: to be added
+Live Verison: https://jojo-designs.github.io/calanderApp/
 Repo link: https://github.com/JoJo-designs/calanderApp
 
 So far I have added the date to the page and I have put two hours with text areas and two save buttons. The value from the text area is saved in local storage and written onto the text area when the page is refreshed. I added the rest of the text areas and made it so they will change colour based on the time of day. The colour changes repersent the hours that are past in the future and present. When I got everthing working I did some css and used some bootstrap columns to make it reponsive.
@@ -18,3 +18,5 @@ I had a fair bit a trouble with this assignment. My frist issue came from having
 
  Lastly I added some Bootstrap columns so it would be reponsive at samller screen sizes.
 
+Screen shots 
+![Calander App](/image/img1.png?raw=true "Image of the clander app")
